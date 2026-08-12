@@ -1,0 +1,10 @@
+cd C:\Users\Admin\Desktop\ThorTheHost
+python -m uvicorn app:app --host 0.0.0.0 --port 8000
+
+
+cloudflared tunnel --config "C:\Users\Admin\.cloudflared\config.yml" run
+
+
+
+2528
+thor123

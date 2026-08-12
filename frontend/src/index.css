@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-steel;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-void text-foreground;
+    font-family: "Inter", system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: "Cinzel", serif;
+    letter-spacing: 0.01em;
+  }
+
+  /* Visible keyboard focus everywhere -- never suppressed for aesthetics. */
+  :focus-visible {
+    outline: 2px solid #f5b027;
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: rgba(245, 176, 39, 0.35);
+    color: #fff;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
