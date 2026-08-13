@@ -1,9 +1,8 @@
 import logging
 import random
-import smtplib
 from datetime import datetime, timedelta
-from email.message import EmailMessage
 from typing import Any
+import httpx
 
 from fastapi import APIRouter, Depends, HTTPException, Response, status
 from pydantic import BaseModel
@@ -34,30 +33,50 @@ def _generate_otp() -> str:
 
 
 def _send_otp_email(to_email: str, otp: str, username: str) -> None:
-    """Send the OTP code via the configured SMTP relay."""
-    msg = EmailMessage()
-    msg["Subject"] = "ThorTheHost — Your Verification Code"
-    msg["From"] = settings.smtp_from_email
-    msg["To"] = to_email
-    msg.set_content(
-        f"Hi {username},\n\n"
-        f"Your ThorTheHost verification code is:\n\n"
-        f"  {otp}\n\n"
-        f"This code expires in {OTP_EXPIRE_MINUTES} minutes.\n"
-        f"If you did not request this, you can safely ignore this email.\n\n"
-        f"— The ThorTheHost Team"
-    )
+    """Send the OTP code via the SendGrid HTTPS API.
+
+    Uses HTTPS (443) instead of SMTP (587) because Render's free tier
+    blocks outbound traffic to SMTP ports.
+    """
+    payload = {
+        "personalizations": [{"to": [{"email": to_email}]}],
+        "from": {"email": settings.smtp_from_email, "name": "ThorTheHost"},
+        "subject": "ThorTheHost — Your Verification Code",
+        "content": [
+            {
+                "type": "text/plain",
+                "value": (
+                    f"Hi {username},\n\n"
+                    f"Your ThorTheHost verification code is:\n\n"
+                    f"  {otp}\n\n"
+                    f"This code expires in {OTP_EXPIRE_MINUTES} minutes.\n"
+                    f"If you did not request this, you can safely ignore this email.\n\n"
+                    f"— The ThorTheHost Team"
+                ),
+            }
+        ],
+    }
     try:
-        with smtplib.SMTP(settings.smtp_host, settings.smtp_port) as server:
-            server.starttls()
-            if settings.smtp_password:
-                server.login(settings.smtp_user, settings.smtp_password)
-            server.send_message(msg)
-        logger.info("OTP email sent to %s", to_email)
+        response = httpx.post(
+            "https://api.sendgrid.com/v3/mail/send",
+            json=payload,
+            headers={
+                "Authorization": f"Bearer {settings.smtp_password}",
+                "Content-Type": "application/json",
+            },
+            timeout=10.0,
+        )
+        response.raise_for_status()
+        logger.info("OTP email sent to %s (status %s)", to_email, response.status_code)
+    except httpx.HTTPStatusError as exc:
+        logger.error(
+            "SendGrid rejected OTP email to %s: %s — %s",
+            to_email, exc.response.status_code, exc.response.text,
+        )
+        raise
     except Exception as exc:
         logger.error("Failed to send OTP email to %s: %s", to_email, exc)
         raise
-
 
 def _create_and_send_otp(user: User, db: Session) -> None:
     """Invalidate old OTPs, create a new one, and email it."""
