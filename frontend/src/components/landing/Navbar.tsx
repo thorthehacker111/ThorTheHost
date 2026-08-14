@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 
 import { Logo } from "@/components/layout/Logo";
 import { Button } from "@/components/ui/button";
+import { AsgardButton } from "@/components/landing/AsgardButton";
 
 const NAV_LINKS = [
   { to: "/how-to-use", label: "How to use?!" },
@@ -25,7 +26,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="hidden items-center gap-6 md:flex">
           <Button asChild variant="ghost" size="sm">
             <Link to="/how-to-use">How to use?!</Link>
           </Button>
@@ -35,9 +36,7 @@ export function Navbar() {
           </Button>
 
           {/* Asgard button */}
-          <Button asChild variant="outline" size="sm">
-            <Link to="/asgard">Asgard</Link>
-          </Button>
+          <AsgardButton variant="nav" />
         </div>
 
         {/* Mobile hamburger toggle */}
@@ -67,13 +66,7 @@ export function Navbar() {
               </Link>
             ))}
 
-            <Link
-              to="/asgard"
-              onClick={() => setIsOpen(false)}
-              className="mt-1 rounded-md border border-lightning/40 px-3 py-2.5 text-sm text-lightning transition-colors hover:bg-lightning/10"
-            >
-              Asgard
-            </Link>
+            <AsgardButton variant="block" onClick={() => setIsOpen(false)} />
           </div>
         </div>
       )}
