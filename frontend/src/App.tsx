@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import LandingPage from "@/pages/LandingPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 import HowToUse from "@/pages/HowToUse";
+import Asgard from "@/pages/Asgard";
 
 import LoginPage from "@/pages/auth/LoginPage";
 import RegisterPage from "@/pages/auth/RegisterPage";
@@ -25,6 +26,9 @@ function App() {
 
       {/* How to use */}
       <Route path="/how-to-use" element={<HowToUse />} />
+
+      {/* Asgard — Shout Out / featured hosters, admins, etc. */}
+      <Route path="/asgard" element={<Asgard />} />
 
       {/* OTP verification — requires being logged in but NOT verified */}
       <Route element={<ProtectedRoute />}>
