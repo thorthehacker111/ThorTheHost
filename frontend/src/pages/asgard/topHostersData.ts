@@ -5,10 +5,10 @@ export const TOP_HOSTERS: string[] = [
   "BEAST",
   "𝐑𝐉🚬",
   "𝐋𝐮𝐬𝐭➣💋",
-  "No Name",
-  "No Name",
-  "No Name",
-  "No Name",
+  "♛𝐅𝐋𝕰𝖃𝖃𝚨̸❤️‍🔥",
+  "𝘼𝘿𝘿𝙔𝙔⚜️🚬",
+  "🐉Wavy",
+  "𝐇𝐚𝐰𝐬𝐢",
   // ...
 ];
 
