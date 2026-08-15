@@ -4,7 +4,7 @@ export const TOP_HOSTERS: string[] = [
   "HARRY",
   "BEAST",
   "𝐑𝐉🚬",
-  "No Name",
+  "𝐋𝐮𝐬𝐭➣💋",
   "No Name",
   "No Name",
   "No Name",
