@@ -4,6 +4,9 @@ import LandingPage from "@/pages/LandingPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 import HowToUse from "@/pages/HowToUse";
 import Asgard from "@/pages/Asgard";
+import Carders from "@/pages/asgard/carders";
+import TopHosters from "@/pages/asgard/tophosters";
+import Rps from "@/pages/asgard/rps";
 
 import LoginPage from "@/pages/auth/LoginPage";
 import RegisterPage from "@/pages/auth/RegisterPage";
@@ -29,6 +32,9 @@ function App() {
 
       {/* Asgard — Shout Out / featured hosters, admins, etc. */}
       <Route path="/asgard" element={<Asgard />} />
+      <Route path="/asgard/carders" element={<Carders />} />
+      <Route path="/asgard/tophosters" element={<TopHosters />} />
+      <Route path="/asgard/rps" element={<Rps />} />
 
       {/* OTP verification — requires being logged in but NOT verified */}
       <Route element={<ProtectedRoute />}>

@@ -1,0 +1,29 @@
+export const TOP_HOSTERS: string[] = [
+  "⚡THOR",
+  "𝐀𝐑𝐂*",
+  "HARRY",
+  "No Name",
+  "No Name",
+  "No Name",
+  "No Name",
+  "No Name",
+  "No Name",
+  "No Name",
+  // ...
+];
+
+
+/**
+ * Top Hosters leaderboard — just names, in rank order.
+ *
+ * Rank 1 = top of this list, rank 2 = next, and so on. To add or
+ * reorder someone, edit this array only — nothing else needs to
+ * change.
+ *
+ * Each name's photo is read automatically from:
+ *   frontend/public/assets/asgard/TopHosters/top<rank>.png
+ * e.g. rank 1 -> top1.png, rank 2 -> top2.png, rank 10 -> top10.png
+ *
+ * Names can include emoji or any special/stylized Unicode characters
+ * exactly as the person uses them — they'll render as typed.
+ */
