@@ -1,15 +1,20 @@
 export const TOP_HOSTERS: string[] = [
-  "𝐀𝐑𝐂*",
+  "𝐀𝐑𝐂",
   "⚡THOR",
   "HARRY",
   "𝐋𝐮𝐬𝐭➣💋",
+  "🐉Wavy",
   "BEAST",
-  "®️𝑪𝒉𝒊𝒔𝒉𝒊𝒚𝒂",
   "♛𝐅𝐋𝕰𝖃𝖃𝚨̸❤️‍🔥",
   "𝘼𝘿𝘿𝙔𝙔⚜️🚬",
-  "🐉Wavy",
   "𝐇𝐚𝐰𝐬𝐢",
-  // ...
+  "No Name",
+  "No Name",
+  "No Name",
+  "No Name",
+  "No Name",
+  "No Name",
+"®️𝑪𝒉𝒊𝒔𝒉𝒊𝒚𝒂",
 ];
 
 
