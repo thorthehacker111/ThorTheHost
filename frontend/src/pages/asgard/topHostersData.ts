@@ -8,13 +8,7 @@ export const TOP_HOSTERS: string[] = [
   "♛𝐅𝐋𝕰𝖃𝖃𝚨̸❤️‍🔥",
   "𝘼𝘿𝘿𝙔𝙔⚜️🚬",
   "𝐇𝐚𝐰𝐬𝐢",
-  "No Name",
-  "No Name",
-  "No Name",
-  "No Name",
-  "No Name",
-  "No Name",
-"®️𝑪𝒉𝒊𝒔𝒉𝒊𝒚𝒂",
+  "®️𝑪𝒉𝒊𝒔𝒉𝒊𝒚𝒂",
 ];
 
 
