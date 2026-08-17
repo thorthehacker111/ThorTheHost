@@ -36,10 +36,10 @@ const ASGARD_ENTRIES: AsgardEntry[] = [
     logo: "/assets/asgard/MainScreen/card1.png",
   },
   {
-    title: "Top Hosters",
-    role: "Server Architect",
-    blurb: "Wielding the thunder to keep the best hosting standing against others.",
-    to: "/asgard/tophosters",
+    title: "Hall of Fame",
+    role: "Legends Keeper",
+    blurb: "Where the realm's greatest names are etched in gold for all eternity.",
+    to: "/asgard/halloffame",
     logo: "/assets/asgard/MainScreen/card2.png",
   },
   {
